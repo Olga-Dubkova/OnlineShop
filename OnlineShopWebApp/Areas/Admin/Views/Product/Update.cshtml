@@ -1,0 +1,25 @@
+﻿@model ProductViewModel
+
+<div class="row">
+    @await Html.PartialAsync("AdminLeftMenu")
+    <div class="col-6">
+        <h3 class="text-center">Редактирование товара</h3>
+        <form method="post">
+            <div class="row" asp-validation-summary="All">
+                <div class="col">
+                    <label asp-for="Name">Название</label><br>
+                    <input type="text" asp-for="Name" value="@Model.Name">><br>
+                    <span asp-validation-for="Name"></span><br>
+                    <label asp-for="Cost">Цена</label><br>
+                    <input type="number" asp-for="Cost" value="@Model.Cost">><br>
+                    <span asp-validation-for="Cost"></span><br>
+                    <label asp-for="Description">Описание</label><br>
+                    <input asp-for="Description" value="@Model.Description">><br>
+                    <span asp-validation-for="Description"></span><br>
+                    <br>
+                    <button class="btn btn-dark" type="submit" asp-area="Admin" asp-controller="Product" asp-action="Update">Сохранить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

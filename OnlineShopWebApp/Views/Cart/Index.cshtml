@@ -1,0 +1,47 @@
+﻿@model CartViewModel
+
+@if (Model == null || Model.Items.Count == 0)
+{
+	<h3>КОРЗИНА ПУСТАЯ</h3>
+}
+else
+{
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<thead>
+					<tr>
+					   <th>Название</th>
+					   <th>Цена</th>
+					   <th>Количество</th>
+					   <th>Стоимость</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var item in Model.Items)
+					{
+						<tr>
+							<td>@item.Product.Name</td>
+							<td>@item.Product.Cost рублей</td>
+							<td>
+								<a class="btn btn-dark" href="/cart/decrease?productId=@item.Product.Id" role="button">-</a>
+								@item.Amount
+								<a class="btn btn-dark" href="/cart/add?productId=@item.Product.Id" role="button">+</a>
+							</td>
+							<td>@item.Cost рублей</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			<div class="text-right">
+				<h4>ИТОГО</h4>
+				<h4>@Model.Total</h4>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-dark" href="/home/index" role="button">Продолжить покупки</a>
+				<a class="btn btn-dark" href="/cart/clear" role="button">Очистить корзину</a>
+				<a class="btn btn-dark" href="/order/index" role="button">Оформить заказ</a>
+			</div>
+		</div>
+	</div>
+}

@@ -1,0 +1,28 @@
+﻿@model UserAccount
+
+<div class="row">
+    @await Html.PartialAsync("AdminLeftMenu")
+    <div class="col-6">
+        <h3 class="text-center">Редактирование пользователя</h3>
+        <form method="post">
+            <div class="row" asp-validation-summary="All">
+                <div class="col">
+
+                    <label asp-for="Login">Логин(email)</label><br>
+                    <input type="text" asp-for="Login" value="@Model.Login">><br>
+                    <span asp-validation-for="Login"></span><br>
+
+                    <label asp-for="Name">Имя</label><br>
+                    <input type="text" asp-for="Name" value="@Model.Name">><br>
+                    <span asp-validation-for="Name"></span><br>
+
+                    <label asp-for="Phone">Телефон</label><br>
+                    <input asp-for="Phone" value="@Model.Phone">><br>
+                    <span asp-validation-for="Phone"></span><br>
+                    <br>
+                    <button class="btn btn-dark" type="submit" asp-area="Admin" asp-controller="User" asp-action="Update">Сохранить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<ProductViewModel>
+@{
+	ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="text-center">
+	<h1 class="display-4">MyShop</h1>
+
+</div>
+<div class="row">
+	@foreach (var product in Model)
+	{
+		<div class="col-4 card shadow">
+			<img class="card-img-top" src=@product.ImagePath alt="Изображение товара">
+			<div class="card-body">
+				<a style="color:black" asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">
+					<h5>@product.Name</h5>
+				</a>
+				<h5>@product.Cost руб.</h5>
+				<div>
+					<a class="btn btn-dark" asp-area="" asp-controller="Cart" asp-action="Add" asp-route-productid="@product.Id" role="button">Добавить в корзину</a>
+					<a class="btn btn-dark" asp-area="" asp-controller="Favorite" asp-action="Add" asp-route-productid="@product.Id" role="button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+

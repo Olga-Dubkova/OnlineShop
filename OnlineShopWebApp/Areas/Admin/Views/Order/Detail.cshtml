@@ -1,0 +1,43 @@
+﻿
+@model OrderViewModel
+
+<form method="post">
+	<div class="row">
+		<div class="col-8">
+			<table class="table">
+				<tr>
+					<td>Дата и время</td>
+					<td>@Model.CreateDataTime.ToString("g")</td>
+				</tr>
+				<tr>
+					<td>Адрес доставки</td>
+					<td>@Model.User.Address</td>
+				</tr>
+				<tr>
+					<td>Получатель</td>
+					<td>
+						@Model.User.Name
+						@Model.User.Surname
+					</td>
+				</tr>
+				<tr>
+					<td>Телефон</td>
+					<td>@Model.User.Phone</td>
+				</tr>
+				<tr>
+					<td>Сумма заказа</td>
+					<td>@Model.Cost</td>
+				</tr>
+				<tr>
+					<td>Статус заказа</td>
+					<td>
+						<select asp-for="@Model.Status"
+								asp-items="@Html.GetEnumSelectList<OrderStatusViewModel>()" class="form-control">
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<button class="btn btn-dark" type="submit" asp-area="Admin" asp-controller="Order" asp-action="UpdateStatus" asp-route-id="@Model.Id">Обновить статус</button>
+</form>

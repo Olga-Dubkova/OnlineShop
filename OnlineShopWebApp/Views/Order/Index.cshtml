@@ -1,0 +1,29 @@
+﻿@model UserOrderViewModel
+<form method="post">
+	<div class="row text-center"asp-validation-summary="All">
+		<div class="col">
+			<div>
+				<input style="width: 50%; height: 50px; resize: none" asp-for="Name" placeholder="Имя" />
+				<span asp-validation-for="Name"></span>
+			</div>
+			<br />
+			<div>
+				<input style="width: 50%; height: 50px; resize: none" asp-for="Surname" placeholder="Фамилия" />
+				<span asp-validation-for="Surname"></span>
+			</div>
+			<br />
+			<div>
+				<input style="width: 50%; height: 50px; resize: none" asp-for="Phone" placeholder="Телефон" />
+				<span asp-validation-for="Phone"></span>
+			</div>
+			<br />
+			<div>
+				<input style="width: 50%; height: 80px; resize: none" asp-for="Address" placeholder="Адрес доставки" />
+				<span asp-validation-for="Address"></span>
+			</div>
+			
+			<br />
+			<button class="btn btn-dark" type="submit" asp-controller="Order" asp-action="Buy">Оформить заказ</button>
+		</div>
+	</div>
+</form>
